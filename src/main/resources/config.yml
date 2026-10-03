@@ -1,0 +1,70 @@
+armazenamento:
+  tipo: LOCAL
+  autosave-segundos: 30
+mysql:
+  host: localhost
+  porta: 3306
+  database: revminions
+  usuario: root
+  senha: ''
+  ssl: false
+  pool-maximo: 3
+minions:
+  limite-por-jogador: 5
+  limites-por-permissao:
+    revminions.limit.10: 10
+  mundos:
+  - plotworld
+  permissao-colocar: revminions.place
+  trabalhar-com-dono-offline: false
+  intervalo-ticks: 10
+  maximo-ataques-por-ciclo: 50
+amigos:
+  coletar-itens: true
+  personalizar: false
+  maximo: 20
+gemas:
+  por-mob: 1
+  mobs:
+    ZOMBIE: 2
+  top-limite: 10
+actionbar:
+  ativada: true
+  distancia: 5
+  mensagem: '&b{nome} &7| Nv. {nivel} | Espada {espada} | Armazém {armazenado}/{capacidade}'
+personalizacao:
+  nome-maximo: 24
+  cores:
+    aqua: 0,170,255
+    vermelho: 255,40,40
+    roxo: 170,0,255
+  particulas:
+    nenhuma: NONE
+    aura: HAPPY_VILLAGER
+    portal: PORTAL
+    magia: WITCH_MAGIC
+  rgb:
+    velocidade: 0.02
+ativadores:
+  cor:
+    material: LEATHER_CHESTPLATE
+    nome: '&bAtivador de cor: {id}'
+    lore:
+    - '&7Botão direito para desbloquear.'
+  particula:
+    material: NETHER_STAR
+    nome: '&dAtivador de partícula: {id}'
+    lore:
+    - '&7Botão direito para desbloquear.'
+  rgb:
+    material: LEATHER_CHESTPLATE
+    nome: '&bAtivador RGB'
+    lore:
+    - '&7Libera o ciclo RGB para seus minions.'
+  gemas:
+    material: EMERALD
+    nome: '&a{valor} Gemas'
+    lore:
+    - '&7Botão direito para creditar gemas.'
+integracoes:
+  yspawners-obrigatorio: true

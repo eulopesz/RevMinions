@@ -1,0 +1,30 @@
+recompensas:
+  diamante:
+    nome: '&bDiamante Raro'
+    tipo: ITEM
+    mobs:
+    - ZOMBIE
+    - SKELETON
+    - BLAZE
+    chance: 2.0
+    fortuna: true
+    material: DIAMOND
+    quantidade: 1
+  gemas:
+    nome: '&aGemas Extras'
+    tipo: GEMAS
+    mobs:
+    - ALL
+    chance: 5.0
+    fortuna: true
+    quantidade: 10
+  comando-exemplo:
+    ativada: false
+    nome: '&eRecompensa por comando'
+    tipo: COMANDO
+    mobs:
+    - ALL
+    chance: 0.5
+    fortuna: true
+    comandos:
+    - give {player} emerald 1

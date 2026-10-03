@@ -1,0 +1,25 @@
+package br.com.eulopeesz.revminions;
+import org.bukkit.*;import org.bukkit.entity.*;import org.bukkit.event.*;import org.bukkit.event.block.Action;import org.bukkit.event.inventory.*;import org.bukkit.event.player.*;import org.bukkit.event.entity.*;import org.bukkit.event.world.*;import org.bukkit.inventory.*;import java.util.*;
+
+public final class Events implements Listener {
+    private final RevMinionsPlugin p;public Events(RevMinionsPlugin p){this.p=p;}
+    @EventHandler public void join(PlayerJoinEvent e){if(p.ready){p.profile(e.getPlayer());p.dirty();}}
+    @EventHandler public void quit(PlayerQuitEvent e){p.prompts.remove(e.getPlayer().getUniqueId());}
+    @EventHandler(priority=EventPriority.HIGHEST)public void interact(PlayerInteractEvent e){String[] tag=p.signed.read(e.getItem());if(tag==null)return;e.setCancelled(true);if(e.getAction()!=Action.RIGHT_CLICK_AIR&&e.getAction()!=Action.RIGHT_CLICK_BLOCK)return;if(tag[0].equals("minion")||tag[0].equals("placed")){if(e.getAction()==Action.RIGHT_CLICK_BLOCK&&e.getBlockFace()==org.bukkit.block.BlockFace.UP)p.place(e.getPlayer(),tag,e.getClickedBlock().getLocation().add(0.5,1,0.5));}else p.activate(e.getPlayer(),tag);}
+    @EventHandler(priority=EventPriority.HIGHEST)public void entity(PlayerInteractEntityEvent e){UUID id=p.entities.id(e.getRightClicked());if(id!=null){e.setCancelled(true);if(p.ready){Model.Minion m=p.state.minions.get(id);if(m!=null)p.menus.open(e.getPlayer(),m,"principal");}}else if(p.signed.read(e.getPlayer().getItemInHand())!=null)e.setCancelled(true);}
+    @EventHandler(priority=EventPriority.HIGHEST)public void manipulate(PlayerArmorStandManipulateEvent e){if(p.entities.id(e.getRightClicked())!=null||p.signed.read(e.getPlayerItem())!=null)e.setCancelled(true);}
+    @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true)public void click(InventoryClickEvent e){
+        if(!(e.getWhoClicked() instanceof Player))return;Player player=(Player)e.getWhoClicked();
+        if(e.getView().getTopInventory().getHolder() instanceof Menus.Holder){e.setCancelled(true);if(e.getClickedInventory()==e.getView().getTopInventory()&&e.getClick()==ClickType.LEFT){Menus.Holder holder=(Menus.Holder)e.getView().getTopInventory().getHolder();int slot=e.getRawSlot();Bukkit.getScheduler().runTask(p,()->{if(player.isOnline()&&player.getOpenInventory().getTopInventory().getHolder()==holder)p.menus.click(player,holder,slot);});}return;}
+        boolean signed=p.signed.read(e.getCurrentItem())!=null||p.signed.read(e.getCursor())!=null||(e.getHotbarButton()>=0&&p.signed.read(player.getInventory().getItem(e.getHotbarButton()))!=null);
+        if(signed&&(e.getSlotType()==InventoryType.SlotType.ARMOR||e.isShiftClick()||e.getView().getType()==InventoryType.ANVIL||e.getView().getType()==InventoryType.CRAFTING&&e.getRawSlot()<5||e.getView().getType()==InventoryType.WORKBENCH&&e.getRawSlot()<10))e.setCancelled(true);
+    }
+    @EventHandler(priority=EventPriority.HIGHEST,ignoreCancelled=true)public void drag(InventoryDragEvent e){if(e.getView().getTopInventory().getHolder() instanceof Menus.Holder){e.setCancelled(true);return;}if(p.signed.read(e.getOldCursor())!=null)for(int raw:e.getRawSlots()){int slot=e.getView().convertSlot(raw);if(raw<e.getView().getTopInventory().getSize()||slot>=36&&slot<=39){e.setCancelled(true);return;}}}
+    @EventHandler(priority=EventPriority.HIGHEST)public void damage(EntityDamageEvent e){if(p.entities.id(e.getEntity())!=null||p.combat.summons.containsKey(e.getEntity().getUniqueId()))e.setCancelled(true);if(e instanceof EntityDamageByEntityEvent){Entity attacker=((EntityDamageByEntityEvent)e).getDamager();if(p.combat.summons.containsKey(attacker.getUniqueId()))e.setCancelled(true);}}
+    @EventHandler(priority=EventPriority.HIGHEST)public void combust(EntityCombustEvent e){if(p.combat.summons.containsKey(e.getEntity().getUniqueId()))e.setCancelled(true);}
+    @EventHandler(priority=EventPriority.HIGHEST)public void target(EntityTargetEvent e){Combat.Summon s=p.combat.summons.get(e.getEntity().getUniqueId());if(s!=null&&(e.getTarget()==null||!e.getTarget().getUniqueId().equals(s.target)))e.setCancelled(true);}
+    @EventHandler(priority=EventPriority.HIGHEST)public void death(EntityDeathEvent e){p.combat.death(e);}
+    @EventHandler public void chunkLoad(ChunkLoadEvent e){p.entities.clearChunk(e.getChunk());for(Entity entity:e.getChunk().getEntities())if(entity instanceof Zombie&&Entities.MARK.equals(entity.getCustomName()))entity.remove();}
+    @EventHandler public void chunkUnload(ChunkUnloadEvent e){for(Entity entity:e.getChunk().getEntities()){UUID id=p.entities.id(entity);if(id!=null){p.entities.remove(id);p.combat.cancel(id);}if(p.combat.summons.containsKey(entity.getUniqueId())){p.combat.summons.remove(entity.getUniqueId());entity.remove();}}}
+    @EventHandler public void chat(AsyncPlayerChatEvent e){RevMinionsPlugin.Prompt prompt=p.prompts.remove(e.getPlayer().getUniqueId());if(prompt==null)return;e.setCancelled(true);String value=e.getMessage();Bukkit.getScheduler().runTask(p,()->p.answer(e.getPlayer(),value,prompt));}
+}

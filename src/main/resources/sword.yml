@@ -1,0 +1,61 @@
+espada:
+  material: IRON_SWORD
+  nome: '&bEspada do Minion'
+  nivel-maximo: 100
+  dano-inicial: 4.0
+  dano-por-nivel: 0.5
+  intervalo-segundos: 2.0
+  custo-inicial: 100
+  custo-multiplicador: 1.15
+encantamentos:
+  dano:
+    nome: '&cDano'
+    nivel-maximo: 20
+    valor-por-nivel: 1.0
+    custo-inicial: 100
+    custo-multiplicador: 1.2
+  velocidade:
+    nome: '&eVelocidade'
+    nivel-maximo: 20
+    valor-por-nivel: 0.03
+    custo-inicial: 100
+    custo-multiplicador: 1.2
+  pilhagem:
+    nome: '&aPilhagem'
+    nivel-maximo: 20
+    valor-por-nivel: 0.05
+    custo-inicial: 150
+    custo-multiplicador: 1.2
+  experiencia:
+    nome: '&bExperiência'
+    nivel-maximo: 20
+    valor-por-nivel: 0.1
+    custo-inicial: 150
+    custo-multiplicador: 1.2
+  varredura:
+    nome: '&6Varredura'
+    nivel-maximo: 5
+    valor-por-nivel: 1.0
+    custo-inicial: 500
+    custo-multiplicador: 1.5
+  fortuna:
+    nome: '&6Fortuna'
+    nivel-maximo: 20
+    aumento-percentual-por-nivel: 5.0
+    custo-inicial: 100
+    custo-multiplicador: 1.5
+  horda-zumbi:
+    nome: '&2Horda Zumbi'
+    nivel-maximo: 10
+    chance-inicial: 1.0
+    chance-por-nivel: 0.5
+    zumbis-iniciais: 2
+    zumbis-por-nivel: 1
+    limite-zumbis: 12
+    limite-global: 100
+    duracao-segundos: 10
+    cooldown-segundos: 30
+    intervalo-ataque-ticks: 20
+    dano: 2.0
+    custo-inicial: 500
+    custo-multiplicador: 1.5

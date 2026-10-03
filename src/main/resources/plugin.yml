@@ -1,0 +1,21 @@
+name: RevMinions
+version: 0.1.1
+main: br.com.eulopeesz.revminions.RevMinionsPlugin
+author: eulopeesz
+depend:
+- PlotSquared
+- yPlugins
+commands:
+  minions:
+    aliases:
+    - revminions
+    description: Gerenciar minions
+permissions:
+  revminions.use:
+    default: true
+  revminions.place:
+    default: true
+  revminions.admin:
+    default: op
+  revminions.type.zumbi:
+    default: true

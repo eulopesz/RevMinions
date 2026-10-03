@@ -1,0 +1,75 @@
+principal:
+  titulo: '&bMinion'
+  itens:
+    estatisticas:
+      slot: 4
+      material: BOOK
+      nome: '&bEstatísticas'
+      lore:
+      - '&7Abates: {abates}'
+      - '&7Gemas geradas: {gemas_geradas}'
+      - '&7Nível: {nivel}'
+      - '&7Espada: {espada}'
+      - '&7Armazém: {armazenado}/{capacidade}'
+    evolucao:
+      slot: 10
+      material: EXP_BOTTLE
+      nome: '&aEvoluir Minion'
+      lore:
+      - '&7Custo próximo nível: {custo} gemas'
+    espada:
+      slot: 12
+      material: IRON_SWORD
+      nome: '&bEspada'
+    personalizacao:
+      slot: 14
+      material: LEATHER_CHESTPLATE
+      nome: '&dPersonalização'
+    armazem:
+      slot: 16
+      material: CHEST
+      nome: '&eArmazém'
+    amigos:
+      slot: 20
+      material: SKULL_ITEM
+      nome: '&bAmigos'
+    recolher:
+      slot: 24
+      material: ARMOR_STAND
+      nome: '&cRecolher minion'
+      lore:
+      - '&7Esvazie o armazém antes.'
+evolucao:
+  titulo: '&bEvoluir Minion'
+espada:
+  titulo: '&bEspada do Minion'
+personalizacao:
+  titulo: '&bPersonalizar Minion'
+armazem:
+  titulo: '&bArmazém'
+amigos:
+  titulo: '&bAmigos'
+cores:
+  titulo: '&bCores'
+particulas:
+  titulo: '&bPartículas'
+botoes:
+  voltar: '&cVoltar'
+  anterior: '&eAnterior'
+  proxima: '&ePróxima'
+  confirmar: '&aEvoluir: {custo} gemas'
+  coletar-itens: '&aColetar itens'
+  coletar-gemas: '&aColetar gemas ({gemas_pendentes})'
+  coletar-comandos: '&eResgatar comandos ({comandos_pendentes})'
+  coletar-xp: '&bColetar XP ({xp})'
+  adicionar-amigo: '&aAdicionar amigo'
+  nome: '&bAlterar nome'
+  cores: '&dCores'
+  particulas: '&bPartículas'
+  rgb: '&bRGB'
+  amigo: '&e{player}'
+  amigo-lore:
+  - '&7Clique para remover.'
+  encantamento: '{nome} &7Nível {nivel}'
+  encantamento-lore:
+  - '&7Próxima evolução: {custo} gemas'

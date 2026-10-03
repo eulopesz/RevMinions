@@ -1,0 +1,7 @@
+altura: 1.5
+espacamento: 0.25
+linhas:
+- '{nome}'
+- '&7Nível {nivel} &8| &7Espada {espada}'
+- '&7Estado: {estado}'
+- '&bArmazém: {armazenado}/{capacidade}'

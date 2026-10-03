@@ -1,0 +1,48 @@
+minions:
+  zumbi:
+    nome: '&aMinion Caçador'
+    material: ARMOR_STAND
+    lore:
+    - '&7Coloque no seu terreno.'
+    - '&7Ataque: mobs de spawners.'
+    permissao: revminions.type.zumbi
+    mobs:
+    - ZOMBIE
+    - SKELETON
+    - BLAZE
+    - SPIDER
+    - CREEPER
+    - IRON_GOLEM
+    roupa:
+      cor: aqua
+      capacete: LEATHER_HELMET
+      peitoral: LEATHER_CHESTPLATE
+      calca: LEATHER_LEGGINGS
+      botas: LEATHER_BOOTS
+    evolucao:
+      nivel-maximo: 100
+      custo-inicial: 100
+      custo-multiplicador: 1.15
+      capacidade-inicial: 1000
+      capacidade-por-nivel: 100
+      alcance-inicial: 4.0
+      alcance-por-nivel: 0.02
+    drops-base:
+      ZOMBIE:
+        material: ROTTEN_FLESH
+        quantidade: 1
+      SKELETON:
+        material: BONE
+        quantidade: 1
+      BLAZE:
+        material: BLAZE_ROD
+        quantidade: 1
+      SPIDER:
+        material: STRING
+        quantidade: 1
+      CREEPER:
+        material: SULPHUR
+        quantidade: 1
+      IRON_GOLEM:
+        material: IRON_INGOT
+        quantidade: 1
